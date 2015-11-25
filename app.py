@@ -21,7 +21,9 @@ def query(s):
     page = url.read()
     soup = bs4.BeautifulSoup(page, "html.parser")
     raw = soup.get_text()
-    text = re.sub("[ \t\n](\w|\d)+"," ",raw)
+    #raw2 = re.sub("[ \t\n](\w|\d)+"," ",raw)
+    #print raw2
+    text = re.findall("(\b?[A-Z][a-z]*('|-)?(\b|\s)){2,}",raw)
     return text
 
 print query("Who is Morgan Freeman")
