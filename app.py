@@ -9,7 +9,7 @@ def query(s):
        -Ex. "who played spiderman"
 
     Returns:
-    A string of names from the html of the top 10 google search results from the query.
+    A string of names from the html of the top 5 google search results from the query.
 
     """
     results = google.search(s, num = 5, start = 0, stop = 5)
