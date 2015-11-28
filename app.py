@@ -24,7 +24,12 @@ def query(s):
     #raw2 = re.sub("[ \t\n](\w|\d)+"," ",raw)
     #print raw2
     text = re.findall("(\b?[A-Z][a-z]*('|-)?(\b|\s)){2,}",raw)
-    return text
+    names = []
+    for dict in text:
+        for i in dict:
+            if i != unicode('') and i != unicode(' ') and i != unicode('\n'):
+                names.append(i)    
+    return names
 
 print query("Who is Morgan Freeman")
 
