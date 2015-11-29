@@ -45,23 +45,13 @@ def mostPopular(results):
      
     retString = ''
     
-    tally = []
-    for i in range(len(results)):
-        tally.append(0)
-        
-    corrIndex = 0
+    tempMaxCount = 0
     
     for name in results:
-            corrIndex = results.index(name)
-            tally[corrIndex] = results.count(name)
-    
-    tempMaxCount = 0
-    for count in tally:
+        count = results.count(name)
         if count > tempMaxCount:
             tempMaxCount = count
-    corrIndex = tally.index(tempMaxCount)
-    
-    retString = results[corrIndex]
+            retString = name
     
     return retString
 
