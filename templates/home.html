@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<title> Queery </title>
+
+<form class="form-container" action="home" method="POST">
+  <center>
+    <!-- Form Header -->
+    <div class="form-title">
+      <h1> Queery </h1>
+    </div>
+    
+    <!-- Search textbox -->
+    Search: <input type="text" name="search"> <br>
+    
+    <!-- Submit button -->
+    <input type = "submit" value="Submit">
+  </center>
+</form>
+
+<div class="result-body">
+  {% if result %}
+  <center>
+    <div class="result-title">
+      <center>
+	<h3> The Genie Says?... </h3>
+      </center>
+    </div>
+  <b>
+    {{result}}
+  </b>
+  </center>
+  {% endif %}
+</div>
+
