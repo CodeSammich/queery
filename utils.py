@@ -28,8 +28,14 @@ def query(s):
     for dict in text:
         for i in dict:
             if i != unicode('') and i != unicode(' ') and i != unicode('\n'):
-                names.append(i)    
-    return names
+                names.append(i)
+    ans = []
+    i=0
+    while (i < len(names)):
+        ans.append(names[i]+names[i+1])
+        i+=2
+        
+    return ans
 
 def mostPopular(results):
     """
