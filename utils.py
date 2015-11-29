@@ -23,7 +23,7 @@ def query(s):
     raw = soup.get_text()
     #raw2 = re.sub("[ \t\n](\w|\d)+"," ",raw)
     #print raw2
-    text = re.findall("(\b?[A-Z][a-z]*('|-)?(\b|\s)){2,}",raw)
+    text = re.findall("(\b?[A-Z][a-z]*('|-)?(\b|\s))(\b?[A-Z][a-z]*('|-)?(\b|\s))",raw)
     names = []
     for dict in text:
         for i in dict:
