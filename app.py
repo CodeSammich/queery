@@ -9,7 +9,7 @@ def query(s):
        -Ex. "who played spiderman"
 
     Returns:
-    A string of names from the html of the top 5 google search results from the query.
+    A list of names (strings) from the html of the top 5 google search results from the query.
 
     """
     results = google.search(s, num = 5, start = 0, stop = 5)
@@ -30,6 +30,23 @@ def query(s):
             if i != unicode('') and i != unicode(' ') and i != unicode('\n'):
                 names.append(i)    
     return names
+
+def mostPopular(names):
+     """
+    TL;DR: Goes through list of names to find most frequent.
+
+    Arguments:
+    names (list) - the list of names passed from a query(s) call.
+       -Ex. ["Andrew Garfield", "Tobey Maguire", ...]
+
+    Returns:
+    The most frequently occuring name (string) from the names list.
+    """
+    retString = ''
+    
+    
+    
+    return retString
 
 print query("Who is Morgan Freeman")
 
