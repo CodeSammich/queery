@@ -31,8 +31,12 @@ def whoquery(s):
                     names.append(i)
     ans = []
     i=0
+    lastFound = ''
     while (i < len(names)-1):
-        ans.append(names[i].rstrip()+" " + names[i+1].rstrip())
+        current = names[i].rstrip()+" " + names[i+1].rstrip()
+        if current != lastFound:
+            ans.append(current)
+            lastFound = current
         i+=2
     return ans
 
@@ -60,3 +64,6 @@ def mostPopular(results):
     
     return retString
 
+#a = whoquery("who played Spiderman")
+#print a
+#print mostPopular(a)
