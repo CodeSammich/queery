@@ -32,7 +32,7 @@ def query(s):
     ans = []
     i=0
     while (i < len(names)):
-        ans.append(names[i]+names[i+1])
+        ans.append(names[i].rstrip()+" " + names[i+1].rstrip())
         i+=2
         
     return ans
