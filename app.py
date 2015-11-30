@@ -14,7 +14,7 @@ def home():
             return render_template("home.html")
         else:
             # all_results = all possible results
-            all_results = utils.query( raw_search )
+            all_results = utils.whoquery( raw_search )
             # r = best result
             r = utils.mostPopular( all_results )
             
