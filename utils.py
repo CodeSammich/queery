@@ -1,4 +1,4 @@
-import google, urllib2, bs4, re
+import google, urllib2, bs4, re, csv
 
 def whoQuery(s):
     """
@@ -17,7 +17,7 @@ def whoQuery(s):
     r = []
     for pg in results:
         r.append(pg)
-
+    
     names = []
     for n in range (0,9):
         url = urllib2.urlopen(r[n])
@@ -29,15 +29,29 @@ def whoQuery(s):
             for i in dict:
                 if i != unicode('') and i != unicode(' ') and i != unicode('\n'):
                     names.append(i)
+
+    f = open("first_names.csv")
+    csvf = csv.reader(f)
+    l = open("last_names.csv")
+    csvl = csv.reader(l)
     ans = []
     i=0
-    lastFound = ''
     while (i < len(names)-1):
-        current = names[i].rstrip()+" " + names[i+1].rstrip()
-        if current != lastFound:
-            ans.append(current)
-            lastFound = current
+        firstValid = False
+        lastValid = False
+        first= names[i].rstrip()
+        last = names[i+1].rstrip()
+        for row in csvf:
+            if first == row[0]:
+                firstValid = True
+        for row in csvl:
+            if last == row[0]:
+                lastValid = True
+        
+        if firstValid and lastValid:
+            ans.append(first+" "+last)
         i+=2
+        
     return ans
 
 def whenQuery(s):
@@ -94,9 +108,9 @@ def mostPopular(results):
     
     return retString
 
-#a = whoQuery("who played Spiderman")
-#print a
-#print mostPopular(a)
+a = whoQuery("who played Spiderman")
+print a
+print mostPopular(a)
 #b = whenQuery("when did World War I start")
 #print b
 #print mostPopular(b)
