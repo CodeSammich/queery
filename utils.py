@@ -1,6 +1,6 @@
 import google, urllib2, bs4, re
 
-def query(s):
+def whoquery(s):
     """
     TL;DR: Searches input on google.
 
@@ -17,24 +17,23 @@ def query(s):
     r = []
     for pg in results:
         r.append(pg)
-    url = urllib2.urlopen(r[0])
-    page = url.read()
-    soup = bs4.BeautifulSoup(page, "html.parser")
-    raw = soup.get_text()
-    #raw2 = re.sub("[ \t\n](\w|\d)+"," ",raw)
-    #print raw2
-    text = re.findall("(\b?[A-Z][a-z]*('|-)?(\b|\s))(\b?[A-Z][a-z]*('|-)?(\b|\s))",raw)
+
     names = []
-    for dict in text:
-        for i in dict:
-            if i != unicode('') and i != unicode(' ') and i != unicode('\n'):
-                names.append(i)
+    for n in range (0,9):
+        url = urllib2.urlopen(r[n])
+        page = url.read()
+        soup = bs4.BeautifulSoup(page, "html.parser")
+        raw = soup.get_text()
+        text = re.findall("(\b?[A-Z][a-z]*('|-)?(\b|\s))(\b?[A-Z][a-z]*('|-)?(\b|\s))",raw)
+        for dict in text:
+            for i in dict:
+                if i != unicode('') and i != unicode(' ') and i != unicode('\n'):
+                    names.append(i)
     ans = []
     i=0
-    while (i < len(names)):
+    while (i < len(names)-1):
         ans.append(names[i].rstrip()+" " + names[i+1].rstrip())
         i+=2
-        
     return ans
 
 def mostPopular(results):
@@ -60,3 +59,4 @@ def mostPopular(results):
             retString = name
     
     return retString
+
